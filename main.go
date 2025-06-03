@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"net/http"
 )
 
 func helloWorldHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello World")
+	fmt.Println("logs are coming through")
 }
 
 // handleFileUpload handles JPEG file uploads
@@ -39,12 +39,14 @@ func handleFileUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println("file is a jpeg")
+
 	// Copy the file contents directly to the response
-	if _, err := io.Copy(w, file); err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		fmt.Fprintf(w, "Error: Failed to process file")
-		return
-	}
+	//if _, err := io.Copy(w, file); err != nil {
+	//	w.WriteHeader(http.StatusInternalServerError)
+	//	fmt.Fprintf(w, "Error: Failed to process file")
+	//	return
+	//}
 }
 
 func main() {
