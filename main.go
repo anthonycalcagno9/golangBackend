@@ -20,6 +20,7 @@ func handleFileUpload(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseMultipartForm(int64(maxUploadSize)); err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		fmt.Fprintf(w, "Error: Failed to parse form data")
+		fmt.Println(err)
 		return
 	}
 
